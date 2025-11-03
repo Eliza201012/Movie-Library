@@ -50,7 +50,7 @@ def change_password(request):
         form = PasswordChangeForm(request.user, request.POST)
         if form.is_valid():
             user = form.save()
-            update_session_auth_hash(request, user)
+            update_session_auth_hash(request, user) # залишає користувача залогіненим
             messages.success(request, "Your password was successfully updated!")
             return redirect("accounts:profile")
     else:
