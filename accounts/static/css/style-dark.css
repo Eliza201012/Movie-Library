@@ -148,3 +148,14 @@ input:focus, textarea:focus {
     font-size: 1.1rem;
     margin-bottom: 0.7rem;
 }
+
+.theme-toggle {
+    cursor: pointer;
+    font-size: 1.4rem;
+    margin-left: 1.5rem;
+    transition: transform 0.3s;
+}
+
+.theme-toggle:hover {
+    transform: scale(1.2);
+}
