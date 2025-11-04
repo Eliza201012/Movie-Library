@@ -1,33 +1,32 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Asian Cinema & Culture Hub{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/style.css' %}">
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif:wght@400;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <title>{% block title %}Movie Library | Accounts{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style-dark.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
 </head>
 <body>
-    <!-- Navigation -->
-    <nav class="navbar">
-        <div class="container">
-            {% comment %} <a href="{% url 'home' %}" class="logo"> {% endcomment %}
-                <div class="logo-icon">東</div>
-                <span>Eastern Cinema</span>
-            {% comment %} </a> {% endcomment %}
-            <div class="nav-links">
-                {% comment %} <a href="{% url 'movies:list' %}" class="nav-link {% if request.resolver_match.url_name == 'movies' %}active{% endif %}">Movies</a>
-                <a href="{% url 'news:list' %}" class="nav-link {% if request.resolver_match.url_name == 'news' %}active{% endif %}">News</a> {% endcomment %}
-                {% if user.is_authenticated %}
-                    <a href="{% url 'accounts:profile' %}" class="btn btn-outline">{{ user.username }}</a>
-                {% else %}
-                    <a href="{% url 'accounts:login' %}" class="btn btn-outline">Account</a>
-                {% endif %}
-            </div>
-        </div>
-    </nav>
+    <header class="header">
+        <div class="logo">🎬 Miranso</div>
+        <nav class="nav">
+            <a href="{% url 'accounts:profile' %}">Profile</a>
+            <a href="{% url 'accounts:change_password' %}">Password</a>
+            <a href="{% url 'accounts:registration' %}">Register</a>
+            <a href="{% url 'accounts:login' %}">Login</a>
+            <a href="{% url 'accounts:custom_logout' %}">Logout</a>
+        </nav>
+    </header>
 
-    {% block content %}{% endblock %}
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>🌸 Movie Library © 2025 | Designed in pastel Asian style</p>
+    </footer>
 </body>
 </html>
