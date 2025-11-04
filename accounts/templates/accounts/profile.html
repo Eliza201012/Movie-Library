@@ -1,79 +1,11 @@
-{% extends 'base.html' %}
-{% load static %}
-
-{% block title %}Profile - Asian Cinema Hub{% endblock %}
-
+{% extends "base.html" %}
+{% block title %}Profile | Movie Library{% endblock %}
 {% block content %}
-<div class="container pt-24 pb-12 max-w-4xl">
-
-    <!-- Profile Hero -->
-    <div class="relative mb-8 h-48 rounded-xl overflow-hidden">
-        <div class="absolute inset-0 bg-gradient-to-r from-primary via-accent to-primary opacity-90"></div>
-    </div>
-
-    <!-- Profile Header -->
-    <div class="relative -mt-24 mb-8 flex flex-col md:flex-row items-center md:items-end gap-6 px-6">
-        <!-- Avatar -->
-        <div class="relative">
-            <img src="{% static 'images/placeholder.svg' %}" alt="Avatar" class="w-32 h-32 rounded-full border-4 border-background shadow-xl">
-        </div>
-
-        <!-- Name & Info -->
-        <div class="flex-1 text-center md:text-left mb-4">
-            <h1 class="text-3xl font-bold mb-2">{{ user.get_full_name }}</h1>
-            <div class="flex flex-wrap gap-4 justify-center md:justify-start text-muted-foreground">
-                <span class="flex items-center gap-2">📧 {{ user.email }}</span>
-                <span class="flex items-center gap-2">📍 {{ user.userprofile.location }}</span>
-                <span class="flex items-center gap-2">📅 Joined {{ user.userprofile.join_date|date:"F Y" }}</span>
-            </div>
-        </div>
-
-        <!-- Edit Button -->
-        <a href="{% url 'accounts:update' %}" class="px-4 py-2 border border-primary text-primary rounded hover:bg-primary hover:text-white transition">
-            Edit Profile
-        </a>
-    </div>
-
-    <!-- Profile Content -->
-    <div class="grid md:grid-cols-3 gap-6">
-
-        <!-- Main Info -->
-        <div class="md:col-span-2 space-y-6">
-            <!-- About Card -->
-            <div class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold mb-2">About</h2>
-                <p class="text-foreground/80">{{ user.userprofile.bio }}</p>
-            </div>
-
-            <!-- Personal Info Card -->
-            <div class="bg-white rounded-xl shadow p-6 space-y-4">
-                <h2 class="text-xl font-bold mb-2">Personal Information</h2>
-                <p><strong>Username:</strong> {{ user.username }}</p>
-                <p><strong>Email:</strong> {{ user.email }}</p>
-            </div>
-        </div>
-
-        <!-- Sidebar -->
-        <div class="space-y-6">
-            <!-- Statistics Card -->
-            <div class="bg-white rounded-xl shadow p-6 space-y-4">
-                <h2 class="text-xl font-bold mb-2">Statistics</h2>
-                <div class="flex justify-between items-center"><span class="text-muted-foreground">Movies Watched</span><span class="text-2xl font-bold text-primary">127</span></div>
-                <div class="flex justify-between items-center"><span class="text-muted-foreground">Reviews Written</span><span class="text-2xl font-bold text-accent">23</span></div>
-                <div class="flex justify-between items-center"><span class="text-muted-foreground">Watchlist</span><span class="text-2xl font-bold text-primary">45</span></div>
-            </div>
-
-            {% comment %} <!-- Favorite Genres Card -->
-            <div class="bg-white rounded-xl shadow p-6">
-                <h2 class="text-xl font-bold mb-2">Favorite Genres</h2>
-                <div class="flex flex-wrap gap-2">
-                    {% for genre in user.userprofile.favorite_genres %}
-                    <span class="px-3 py-1 bg-primary/10 text-primary rounded-full text-sm">{{ genre }}</span>
-                    {% endfor %}
-                </div>
-            </div> {% endcomment %}
-        </div>
-
-    </div>
+<div class="profile-card">
+    <img src="{{ profile.avatar.url }}" alt="Avatar" class="avatar">
+    <h2>{{ user.username }}</h2>
+    <p class="email">{{ user.email }}</p>
+    <p class="bio">{{ user.profile.bio|default:"No bio yet..." }}</p>
+    <a href="{% url 'accounts:update' %}" class="btn small">Edit Profile</a>
 </div>
 {% endblock %}
