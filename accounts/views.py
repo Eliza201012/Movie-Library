@@ -4,6 +4,7 @@ from django.contrib.auth import login, logout, update_session_auth_hash
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.forms import PasswordChangeForm
 from .forms import SignUpForm, UpdateProfileForm, UpdateUserForm
+from .models import Profile
 
 def registration(request):
     if request.method == "POST":
@@ -19,7 +20,8 @@ def registration(request):
 
 @login_required
 def profile(request):
-    return render(request, "accounts/profile.html")
+    profile, created = Profile.objects.get_or_create(user=request.user)
+    return render(request, "accounts/profile.html", {"profile" : profile})
 
 @login_required
 def update_profile_and_user(request):
@@ -36,7 +38,7 @@ def update_profile_and_user(request):
         user_form = UpdateUserForm(instance=request.user)
         profile_form = UpdateProfileForm(instance=request.user.profile)
 
-    return render(request, "accounts/profile.html", {"user_form" : user_form, "profile_form" : profile_form})
+    return render(request, "accounts/update.html", {"user_form" : user_form, "profile_form" : profile_form})
 
 
 def custom_logout(request):
