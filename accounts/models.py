@@ -4,7 +4,7 @@ from PIL import Image
 
 class Profile(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, verbose_name="User")
-    avatar = models.ImageField(verbose_name="Avatar", upload_to="avatars/", default="avatars/default.png")
+    avatar = models.ImageField(verbose_name="Avatar", upload_to="avatars/", default="avatars/default.jpg")
     bio = models.TextField(verbose_name="Bio", blank=True, null=True)
     # favorite_movies = models.ManyToManyField("movies.Movie", verbose_name="Favorite movies", blank=True)
 
