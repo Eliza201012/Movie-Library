@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Register | Movie Library{% endblock %}
+{% block content %}
+<div class="form-card">
+    <h2>Create Account 🍡</h2>
+    <form method="post">
+        {% csrf_token %}
+        {{ form.as_p }}
+        <button type="submit" class="btn">Register</button>
+    </form>
+    <p class="alt-link">Already have an account? <a href="{% url 'accounts:login' %}">Login here</a></p>
+</div>
+{% endblock %}

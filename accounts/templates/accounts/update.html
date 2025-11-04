@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% block title %}Edit Profile | Movie Library{% endblock %}
+{% block content %}
+<div class="form-card">
+    <h2>Edit Profile 🌸</h2>
+    <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <div class="form-section">
+            <h3>👤 User Info</h3>
+            {{ user_form.as_p }}
+        </div>
+
+        <div class="form-section">
+            <h3>🖼 Profile Info</h3>
+            {{ profile_form.as_p }}
+        </div>
+
+        <button type="submit" class="btn">Save Changes</button>
+    </form>
+    <p class="alt-link"><a href="{% url 'accounts:profile' %}">← Back to profile</a></p>
+</div>
+{% endblock %}

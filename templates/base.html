@@ -1,0 +1,32 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Movie Library | Accounts{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/style-dark.css' %}">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header class="header">
+        <div class="logo">🎬 Miranso</div>
+        <nav class="nav">
+            <a href="{% url 'accounts:profile' %}">Profile</a>
+            <a href="{% url 'accounts:change_password' %}">Password</a>
+            <a href="{% url 'accounts:registration' %}">Register</a>
+            <a href="{% url 'accounts:login' %}">Login</a>
+            <a href="{% url 'accounts:custom_logout' %}">Logout</a>
+        </nav>
+    </header>
+
+    <main class="container">
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer class="footer">
+        <p>🌸 Movie Library © 2025 | Designed in pastel Asian style</p>
+    </footer>
+</body>
+</html>
