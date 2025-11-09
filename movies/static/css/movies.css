@@ -1,0 +1,342 @@
+/* ===== BODY ===== */
+body {
+  font-family: 'Noto Sans JP', sans-serif;
+  background-color: #121212;
+  color: #f0f0f0;
+  margin: 0;
+  padding: 0;
+}
+
+/* ===== HEADER ===== */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(90deg, #1a1a1a, #1f1f1f);
+  padding: 1rem 2.5rem;
+  box-shadow: 0 0 25px rgba(255, 182, 193, 0.15);
+  border-bottom: 1px solid rgba(255, 182, 193, 0.1);
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+/* Логотип */
+.logo, .logo-link {
+  font-size: 1.8rem;
+  color: #ffb6c1;
+  font-weight: 700;
+  text-shadow: 0 0 10px rgba(255, 182, 193, 0.6);
+  transition: transform 0.3s ease, text-shadow 0.3s ease;
+  text-decoration: none;
+}
+
+.logo:hover, .logo-link:hover {
+  transform: scale(1.05);
+  text-shadow: 0 0 20px rgba(255, 192, 203, 0.9);
+}
+
+/* NAVIGATION */
+.nav {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.nav a {
+  color: #ddd;
+  text-decoration: none;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  position: relative;
+  transition: color 0.3s ease;
+}
+
+/* Підсвічування при наведенні */
+.nav a::after {
+  content: "";
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+  width: 0%;
+  height: 2px;
+  background: linear-gradient(90deg, #ffb6c1, #ff69b4);
+  transition: width 0.3s ease;
+  border-radius: 2px;
+}
+
+.nav a:hover {
+  color: #ffb6c1;
+}
+
+.nav a:hover::after {
+  width: 100%;
+}
+
+/* ===== MAIN CONTAINER ===== */
+.container {
+  max-width: 1100px;
+  margin: 2rem auto;
+  padding: 1rem;
+  animation: fadeIn 0.8s ease;
+}
+
+/* ===== FOOTER ===== */
+.footer {
+  text-align: center;
+  padding: 1rem 0;
+  border-top: 1px solid rgba(255, 182, 193, 0.1);
+  color: #999;
+  font-size: 0.9rem;
+  letter-spacing: 0.3px;
+}
+
+/* ===== PAGE TITLE ===== */
+.page-title {
+  text-align: center;
+  font-size: 2rem;
+  color: #ffb6c1;
+  margin: 30px 0;
+  letter-spacing: 1px;
+  animation: fadeIn 1.2s ease-in;
+}
+
+/* ===== MOVIE GRID ===== */
+.movie-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+  padding: 2rem;
+  justify-items: center;
+  animation: fadeInUp 1.5s ease-in-out;
+}
+
+/* ===== MOVIE CARD ===== */
+.movie-card {
+  background: linear-gradient(145deg, #1b1b1b, #232323);
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.1);
+  width: 250px;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+  opacity: 0;
+  transform: translateY(40px);
+  animation: cardAppear 0.6s ease forwards;
+}
+
+.movie-card:hover {
+  transform: translateY(-10px) scale(1.05);
+  box-shadow: 0 0 25px rgba(255, 182, 193, 0.35);
+}
+
+/* Poster */
+.movie-poster {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.movie-card:hover .movie-poster {
+  transform: scale(1.05);
+}
+
+/* Movie Info */
+.movie-info {
+  padding: 1rem;
+  text-align: center;
+}
+
+.movie-title {
+  font-size: 1.2rem;
+  color: #ffc0cb;
+  margin-bottom: 10px;
+}
+
+.movie-desc {
+  color: #bbb;
+  font-size: 0.9rem;
+  height: 40px;
+  overflow: hidden;
+}
+
+/* --- Form styling --- */
+.form-container {
+  max-width: 600px;
+  margin: 50px auto;
+  background: #1e1e1e;
+  padding: 30px;
+  border-radius: 15px;
+  box-shadow: 0 0 15px rgba(255, 182, 193, 0.3);
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  font-weight: 600;
+  color: #ffb6c1;
+  margin-bottom: 8px;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #444;
+  background-color: #2a2a2a;
+  color: #fff;
+  font-size: 1rem;
+  transition: 0.3s ease;
+}
+
+.form-group input:focus,
+.form-group textarea:focus,
+.form-group select:focus {
+  border-color: #ffb6c1;
+  outline: none;
+  box-shadow: 0 0 10px rgba(255, 182, 193, 0.3);
+}
+
+.field-error {
+  color: #ff6b81;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Error messages */
+.field-error {
+  color: #ff6b81;
+  font-size: 0.85rem;
+  margin-top: 5px;
+}
+
+/* Buttons already в стилі сайту */
+.btn-submit {
+  background-color: #ffb6c1;
+  color: #121212;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-submit:hover {
+  background-color: #ff92ab;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.4);
+}
+
+.btn-cancel {
+  background-color: #444;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 12px;
+  font-weight: 600;
+  text-decoration: none;
+  margin-left: 10px;
+  transition: all 0.3s ease;
+}
+
+.btn-cancel:hover {
+  background-color: #666;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.3);
+}
+
+/* ===== BUTTONS ===== */
+button, .btn, .movie-info a {
+  display: inline-block;
+  padding: 8px 15px;
+  border-radius: 12px;
+  border: none;
+  font-weight: 600;
+  font-size: 0.9rem;
+  cursor: pointer;
+  text-decoration: none;
+  text-align: center;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.2);
+}
+
+/* Кольори кнопок */
+.btn-add, .btn-submit {
+  background-color: #ffb6c1;
+  color: #121212;
+}
+
+.btn-edit {
+  background-color: #609966;
+  color: #fff;
+}
+
+.btn-delete {
+  background-color: #b8405e;
+  color: #fff;
+}
+
+.btn-cancel, .btn-view {
+  background-color: #444;
+  color: #fff;
+}
+
+/* ---------- CREATE BUTTON ---------- */
+
+.btn-create {
+  display: inline-block;
+  padding: 10px 25px;
+  background-color: #ffb6c1; /* ніжно-рожевий */
+  color: #1a1a1a; /* темний текст */
+  border-radius: 10px;
+  font-weight: 600;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 10px rgba(255, 182, 193, 0.3);
+  margin: 10px auto;
+  text-align: center;
+}
+
+.btn-create:hover {
+  background-color: #ff8fa3;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.5);
+  text-decoration: none; /* прибираємо підкреслення */
+}
+
+.btn-create:active {
+  transform: scale(0.97);
+  box-shadow: 0 2px 8px rgba(255, 182, 193, 0.3);
+}
+
+
+/* Hover Effect */
+button:hover, .btn:hover, .movie-info a:hover {
+  background-color: #ff92ab;
+  transform: translateY(-3px) scale(1.05);
+  box-shadow: 0 6px 15px rgba(255, 182, 193, 0.4);
+}
+
+/* Active Effect */
+button:active, .btn:active, .movie-info a:active {
+  transform: translateY(0) scale(0.98);
+  box-shadow: 0 3px 8px rgba(255, 182, 193, 0.3);
+}
+
+/* ===== ANIMATIONS ===== */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes cardAppear {
+  from { opacity: 0; transform: translateY(30px); }
+  to { opacity: 1; transform: translateY(0); }
+}
