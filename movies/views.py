@@ -9,13 +9,13 @@ def is_admin(user):
 @user_passes_test(is_admin, login_url="accounts:login")
 def create_movie(request):
     if request.method == "POST":
-        form = MovieForm(request.POST)
+        form = MovieForm(request.POST, request.FILES)
         if form.is_valid():
             form.save()
             return redirect("movies:movie_list")
     else:
         form = MovieForm()
-    return render(request, "movies/movie_form_admin.html", {"form" : form})
+    return render(request, "movies/create_movie.html", {"form" : form})
 
 def movie_list(request):
     movies = Movie.objects.all()
