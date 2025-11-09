@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Update Movie | Movie Library{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/movies.css' %}">
+
+<h1 class="page-title">✏️ Update Movie</h1>
+
+<div class="form-container">
+  <form method="POST" enctype="multipart/form-data">
+    {% csrf_token %}
+    {% for field in form %}
+      <div class="form-group">
+        {{ field.label_tag }}
+        {{ field }}
+        {% if field.errors %}
+          <p style="color:#ff6b81; font-size:0.85rem;">{{ field.errors }}</p>
+        {% endif %}
+      </div>
+    {% endfor %}
+
+    <div style="text-align:center; margin-top:15px;">
+      <button type="submit" class="btn-submit">Update</button>
+      <a href="{% url 'movies:movie_list' %}" class="btn-cancel">Cancel</a>
+    </div>
+  </form>
+</div>
+{% endblock %}
