@@ -1,5 +1,4 @@
 from django.db import models
-import datetime
 from django.utils import timezone   
 
 class Movie(models.Model):
@@ -24,11 +23,16 @@ class Movie(models.Model):
     poster = models.ImageField(verbose_name="Poster", upload_to="posters/", default="posters/default-poster.jpeg")
     description = models.TextField(verbose_name="Description", blank=True, null=True)
     rating = models.PositiveSmallIntegerField(verbose_name="Rating", default=0)
-    genres = models.CharField(verbose_name="Genres", choices=GENRE_CHOICES)
-    duration = models.TimeField(verbose_name="Duration")
+    genre = models.CharField(verbose_name="Genre", choices=GENRE_CHOICES, default="action")
+    duration = models.PositiveSmallIntegerField(verbose_name="Duration")
     actors = models.CharField(verbose_name="Actors", max_length=100)
     release_date = models.DateField(verbose_name="Release date")
     status = models.CharField(verbose_name="Status", choices=STATUS_CHOICES)
+
+    class Meta:
+        ordering = ["title", "release_date"]
+        verbose_name = "Movie"
+        verbose_name_plural = "Movies"
 
     def days_left(self):
         today = timezone.now().date()
