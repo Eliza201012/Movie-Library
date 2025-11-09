@@ -34,7 +34,7 @@ def movie_update(request, id):
             form.save()
             return redirect("movies:movie_list")
     else:
-        form = MovieForm(instance=Movie)
+        form = MovieForm(instance=movie)
     return render(request, "movies/movie_form_admin.html", {"form" : form})
 
 @user_passes_test(is_admin, login_url="accounts:login")
