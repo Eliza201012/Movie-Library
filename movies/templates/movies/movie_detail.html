@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ movie.title }} | Movie Library{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/movies.css' %}">
+
+<div class="movie-detail">
+    <img src="{{ movie.poster.url }}" alt="{{ movie.title }}" class="movie-detail-poster">
+
+    <div class="movie-detail-info">
+        <h1>{{ movie.title }}</h1>
+        <p class="movie-genre">🎭 {{ movie.genre }}</p>
+        <p class="movie-year">📅 {{ movie.release_date }}</p>
+        <p class="movie-days-left"> ⏳ {{ movie.days_left }}</p>
+        <p class="movie-description">{{ movie.description }}</p>
+
+        {% if user.is_staff or user.is_superuser %}
+        <div class="admin-controls" style="margin-top: 15px;">
+            <a href="{% url 'movies:movie_update' movie.id %}" class="btn btn-edit">✏️ Edit</a>
+            <a href="{% url 'movies:movie_delete' movie.id %}" class="btn btn-delete">🗑 Delete</a>
+        </div>
+        {% endif %}
+    </div>
+</div>
+{% endblock %}

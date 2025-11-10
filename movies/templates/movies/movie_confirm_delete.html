@@ -1,0 +1,17 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}Delete Movie | Movie Library{% endblock %}
+
+{% block content %}
+<div class="delete-container">
+    <h1>🗑 Delete Movie</h1>
+    <p>Are you sure you want to delete <strong>{{ movie.title }}</strong>?</p>
+
+    <form method="POST">
+        {% csrf_token %}
+        <button type="submit" class="btn-delete">Yes, delete</button>
+        <a href="{% url 'movies:movie_list' %}" class="btn-cancel">Cancel</a>
+    </form>
+</div>
+{% endblock %}
