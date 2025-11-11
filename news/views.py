@@ -15,7 +15,7 @@ def create_news(request):
             return redirect("news:news_list")
     else:
         form = NewsForm()
-    return render(request, "news/create_news.html", {"form" : form})
+    return render(request, "news/news_form.html", {"form" : form})
 
 def news_list(request):
     news = News.objects.all()
@@ -35,7 +35,7 @@ def update_news(request, id):
             return redirect("news:news_list")
     else:
         form = NewsForm(instance=news)
-    return render(request, "news/update_news.html", {"form" : form})
+    return render(request, "news/news_form.html", {"form" : form})
 
 @user_passes_test(is_admin, login_url="accounts:login")
 def delete_news(request, id):
