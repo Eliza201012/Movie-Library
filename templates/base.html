@@ -18,7 +18,7 @@
 
         <nav class="nav">
             <a href="{% url 'movies:movie_list' %}">Movies</a>
-            <a href="#">News</a>
+            <a href="{% url 'news:news_list' %}">News</a>
             
             {% if user.is_authenticated %}
                 <a href="{% url 'accounts:profile' %}">Profile</a>
