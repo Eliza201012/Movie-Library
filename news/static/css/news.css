@@ -1,0 +1,255 @@
+/* --- BODY --- */
+body {
+    background-color: #121212;
+    color: #e6e6e6;
+    font-family: 'Noto Sans JP', sans-serif;
+    margin: 0;
+    padding: 0;
+}
+
+/* --- PAGE TITLE --- */
+.page-title {
+    text-align: center;
+    color: #ffb6c1;
+    font-size: 2.2rem;
+    margin: 2rem 0 1rem;
+}
+
+/* --- BUTTONS --- */
+.btn-add {
+    display: block;
+    width: fit-content;
+    margin: 0 auto 2rem;
+    padding: 0.7rem 1.3rem;
+    background-color: #ffb6c1;
+    color: #1a1a1a;
+    border-radius: 10px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.3s;
+}
+
+.btn-add:hover {
+    transform: scale(1.05);
+}
+
+/* --- NEWS LIST --- */
+.news-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 2rem;
+    padding: 0 2rem 3rem;
+}
+
+.news-card {
+    background-color: #1f1f1f;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 0 10px rgba(255,180,0,0.15);
+    transition: transform 0.3s;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-content {
+    padding: 1rem;
+}
+
+.news-title {
+    font-size: 1.2rem;
+    color: #ffb6c1;
+}
+
+.news-date {
+    font-size: 0.9rem;
+    color: #aaa;
+    margin-bottom: 0.5rem;
+}
+
+.news-preview {
+    font-size: 0.95rem;
+    color: #ccc;
+}
+
+.btn-read {
+    color: #ffb6c1;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-read:hover {
+    color: #ffb6c1;
+}
+
+/* --- DETAIL PAGE --- */
+.news-detail-container {
+    max-width: 700px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255,180,0,0.15);
+}
+
+.news-detail-title {
+    color: #ffb6c1;
+    text-align: center;
+    margin-bottom: 0.5rem;
+}
+
+.news-detail-date {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #aaa;
+}
+
+.news-detail-img {
+    display: block;
+    margin: 1.5rem auto;
+    width: 100%;
+    border-radius: 10px;
+}
+
+.news-detail-body {
+    line-height: 1.6;
+    color: #ddd;
+}
+
+.news-detail-actions {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+.btn-edit, .btn-delete {
+    display: inline-block;
+    margin: 0 0.5rem;
+    padding: 0.6rem 1.2rem;
+    border-radius: 8px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: 0.3s;
+}
+
+.btn-edit {
+    background-color: #ffb6c1;
+    color: #1a1a1a;
+}
+
+.btn-delete {
+    background-color: #d9534f;
+    color: white;
+}
+
+.btn-edit:hover { background-color: #ffb6c1; }
+.btn-delete:hover { background-color: #ff6f6f; }
+
+/* --- FORM --- */
+.news-form-container {
+    max-width: 600px;
+    margin: 3rem auto;
+    padding: 2rem;
+    background-color: #1c1c1c;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(255,180,0,0.15);
+}
+
+.news-form-title {
+    text-align: center;
+    font-size: 1.8rem;
+    color: #ffb6c1;
+    margin-bottom: 2rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 0.5rem;
+    color: #ffb6c1;
+    font-weight: 500;
+}
+
+.form-group input,
+.form-group textarea {
+    width: 100%;
+    padding: 0.7rem;
+    border-radius: 8px;
+    border: none;
+    background-color: #2a2a2a;
+    color: #e6e6e6;
+}
+
+.form-group input:focus,
+.form-group textarea:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px #ffb6c1;
+}
+
+/* --- PHOTO PREVIEW --- */
+.news-image-preview {
+    text-align: center;
+    margin-bottom: 1.5rem;
+}
+
+.news-image-preview img {
+    max-width: 300px;
+    max-height: 200px;
+    width: auto;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    object-fit: cover;
+}
+
+/* --- SUBMIT BUTTON --- */
+.btn-submit {
+    display: block;
+    margin: 2rem auto 0;
+    padding: 0.8rem 2rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: #1a1a1a;
+    background-color: #ffb6c1;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.btn-submit:hover {
+    transform: scale(1.05);
+}
+
+/* --- DELETE PAGE --- */
+.delete-container {
+    max-width: 450px;
+    margin: 5rem auto;
+    background-color: #1c1c1c;
+    padding: 2rem;
+    text-align: center;
+    border-radius: 10px;
+}
+
+.btn-cancel {
+    display: inline-block;
+    margin-left: 1rem;
+    padding: 0.6rem 1.3rem;
+    background-color: #444;
+    border-radius: 8px;
+    text-decoration: none;
+    color: white;
+}
+
+.btn-cancel:hover {
+    background-color: #666;
+}
