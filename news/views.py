@@ -29,7 +29,7 @@ def news_detail(request, id):
 def update_news(request, id):
     news = get_object_or_404(News, id=id)
     if request.method == "POST":
-        form = NewsForm(request.POST, instance=news)
+        form = NewsForm(request.POST, request.FILES, instance=news)
         if form.is_valid():
             form.save()
             return redirect("news:news_list")
