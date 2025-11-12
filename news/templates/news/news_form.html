@@ -1,0 +1,36 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}{{ form.instance.id|yesno:"Edit News,Add News" }} | Movie Library{% endblock %}
+
+{% block content %}
+
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+
+<div class="news-form-container">
+    <h2 class="news-form-title">
+        {% if form.instance.id %}✏️ Edit Movie News{% else %}📰 Add Movie News{% endif %}
+    </h2>
+
+    <!-- Прев’ю фото: якщо нема фото, підставляємо дефолт -->
+    <div class="news-image-preview">
+        <img src="{% if form.instance.photo %}{{ form.instance.photo.url }}{% else %}{% static 'photos/default-photo.jpg' %}{% endif %}" alt="News Image Preview">
+    </div>
+
+    <form method="post" enctype="multipart/form-data" class="news-form">
+        {% csrf_token %}
+        {% for field in form %}
+            <div class="form-group">
+                <label for="{{ field.id_for_label }}">{{ field.label }}</label>
+                {{ field }}
+                {% for error in field.errors %}
+                    <p class="error-text">{{ error }}</p>
+                {% endfor %}
+            </div>
+        {% endfor %}
+
+        <button type="submit" class="btn-submit">Save</button>
+    </form>
+</div>
+
+{% endblock %}
