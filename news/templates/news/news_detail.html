@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}{{ news.title }} | Movie Library{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+
+<div class="news-detail-container">
+    <h1 class="news-detail-title">{{ news.title }}</h1>
+    <p class="news-detail-date">🗓 {{ news.created_at|date:"F j, Y" }}</p>
+
+    {% if news.photo %}
+        <img src="{{ news.photo.url }}" alt="{{ news.title }}" class="news-detail-img">
+    {% endif %}
+
+    <div class="news-detail-body">
+        {{ news.main_text|linebreaks }}
+    </div>
+
+    {% if user.is_superuser %}
+        <div class="news-detail-actions">
+            <a href="{% url 'news:update_news' news.id %}" class="btn-edit">✏️ Edit</a>
+            <a href="{% url 'news:delete_news' news.id %}" class="btn-delete">🗑 Delete</a>
+        </div>
+    {% endif %}
+</div>
+{% endblock %}

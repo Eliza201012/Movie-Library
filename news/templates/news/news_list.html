@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}News | Movie Library{% endblock %}
+
+{% block content %}
+<link rel="stylesheet" href="{% static 'css/news.css' %}">
+
+<div class="news-container">
+    <h1 class="page-title">🎬 Movie News</h1>
+
+    {% if user.is_superuser %}
+        <div class="btn-add-container">
+            <a href="{% url 'news:create_news' %}" class="btn-add">＋ Add News</a>
+        </div>
+    {% endif %}
+
+    {% if news %}
+        <div class="news-grid">
+            {% for item in news %}
+                <div class="news-card">
+                    {% if item.photo %}
+                        <img src="{{ item.photo.url }}" alt="{{ item.title }}" class="news-img">
+                    {% endif %}
+                    <div class="news-content">
+                        <h3 class="news-title">{{ item.title }}</h3>
+                        <p class="news-date">{{ item.created_at|date:"F j, Y" }}</p>
+                        <p class="news-preview">{{ item.text|truncatewords:20 }}</p>
+                        <a href="{% url 'news:news_detail' item.id %}" class="btn-read">Read more →</a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p class="no-news">No movie news yet 🍿</p>
+    {% endif %}
+</div>
+{% endblock %}
