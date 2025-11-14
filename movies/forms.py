@@ -20,8 +20,7 @@ class MovieForm(forms.ModelForm):
                 "class" : "form-control",
                 "placeholder" : "Enter movie title",
             }),
-            # ClearableFileInput -- дає можливість змінювати або очищати завантажений файл
-            "poster" : forms.ClearableFileInput(attrs={
+            "poster" : forms.FileInput(attrs={
                 "class" : "form-control",
             }),
             "description" : forms.Textarea(attrs={
