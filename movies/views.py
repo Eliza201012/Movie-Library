@@ -29,7 +29,7 @@ def movie_detail(request, id):
 def movie_update(request, id):
     movie = get_object_or_404(Movie, id=id)
     if request.method == "POST":
-        form = MovieForm(request.POST, instance=movie)
+        form = MovieForm(request.POST, request.FILES, instance=movie)
         if form.is_valid():
             form.save()
             return redirect("movies:movie_list")
